@@ -58,3 +58,12 @@ julia() {
   fi
 }
 ```
+
+## ⚙️ Updating
+
+Change directories to the environment you want to update and run:
+
+```sh
+julia --project=. -e 'using Pkg; Pkg.update()'
+make
+```
