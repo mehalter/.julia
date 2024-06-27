@@ -89,36 +89,38 @@ cp -r environments/repl/ ~/.julia/environments/repl
 
 3. Set up the `repl` environment:
 
-```sh
-cd ~/.julia/environments/repl
-make
-# This opens a REPL, follow these steps:
-# 1. Press Ctrl+r, then once fzf opens press Ctrl+c
-# 2. Paste the text below in its entirety into the REPL and press Enter
-```
+   1. Configure your shell environment with the following:
 
-```julia
-print("Hello, World")
-for i in 1:10
-  print(i)
-end
-(((((())))))
-using Revise
-exit()
-```
+      ```sh
+      julia() {
+        julia_bin=${JULIA_DEPOT_PATH:-~/.julia}/environments/repl/bin/julia
+        if [[ -f "${julia_bin}" ]]; then
+          "${julia_bin}" "$@"
+        else
+          command julia "$@"
+        fi
+      }
+      ```
 
-4. Add the following function to your shell configuration:
+   2. Build the system image
 
-```sh
-julia() {
-  julia_bin=${JULIA_DEPOT_PATH:-~/.julia}/environments/repl/bin/julia
-  if [[ -f "${julia_bin}" ]]; then
-    "${julia_bin}" "$@"
-  else
-    command julia "$@"
-  fi
-}
-```
+      ```sh
+      cd ~/.julia/environments/repl
+      make
+      # This opens a REPL, follow these steps:
+      # 1. Press Ctrl+r, then once fzf opens press Ctrl+c
+      # 2. Paste the text below in its entirety into the REPL and press Enter
+      ```
+
+      ```julia
+      print("Hello, World")
+      for i in 1:10
+        print(i)
+      end
+      (((((())))))
+      using Revise
+      exit()
+      ```
 
 ## ⚙️ Updating
 
