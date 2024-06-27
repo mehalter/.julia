@@ -1,7 +1,6 @@
 atreplinit() do repl
-    repl_image = joinpath(get(DEPOT_PATH, 1, joinpath(homedir(), ".julia")), "environments", "repl", "repl.so")
     # Only setup REPL if using the REPL system image
-    if unsafe_string(Base.JLOptions().image_file) == repl_image
+    if haskey(ENV, "JULIA_REPL") || unsafe_string(Base.JLOptions().image_file) == joinpath(get(DEPOT_PATH, 1, joinpath(homedir(), ".julia")), "environments", "repl", "repl.so")
         @eval begin
             using OhMyREPL
             colorscheme!("GitHubDark")

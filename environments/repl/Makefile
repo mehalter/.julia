@@ -71,8 +71,9 @@ export JULIA_SHIM
 define JULIA_SHIM
 #!/bin/bash
 JULIA=${JULIA}
-JULIA_LOAD_PATH="$${JULIA_LOAD_PATH}:${PWD}"
+JULIA_LOAD_PATH="$${JULIA_LOAD_PATH:-:}:${PWD}"
 if [[ $${JULIA_TRACE_COMPILE} = "1" ]]; then
+    export JULIA_REPL=1
     exec $${JULIA} --trace-compile=${PWD}/packagecompiler/precompile_statements.jl "$$@"
 elif [[ -f ${PWD}/$(SYSIMAGE) ]]; then
     exec $${JULIA} --sysimage=${PWD}/$(SYSIMAGE) "$$@"
