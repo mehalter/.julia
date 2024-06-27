@@ -33,7 +33,7 @@ cd ~/.julia/environments/repl
 make
 # This opens a REPL, follow these steps:
 # 1. Press Ctrl+r, then once fzf opens press Ctrl+c
-# 2. Copy the text below in its entirety and paste it into the REPL and press Enter
+# 2. Paste the text below in its entirety into the REPL and press Enter
 ```
 
 ```julia
