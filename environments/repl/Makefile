@@ -34,7 +34,7 @@ else
 	SYSIMAGE=repl.dylib
 endif
 
-REPL_PKGS:=$(shell echo '["OhMyREPL", "KittyTerminalImages", "Revise"]')
+REPL_PKGS:=$(shell echo '["OhMyREPL", "KittyTerminalImages", "Revise", "TestEnv"]')
 
 default: $(SYSIMAGE)
 
