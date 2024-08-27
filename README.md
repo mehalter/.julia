@@ -14,9 +14,14 @@ This repository aims to provide an easy to setup Julia configuration with two sy
 ```sh
 mkdir -p ~/.julia/{config,environments}
 mv ~/.julia/config/startup.jl ~/.julia/config/startup.jl.bak 2>/dev/null
-cp config/startup.jl ~/.julia/config/startup.jl
-cp -r environments/nvim-lspconfig/ ~/.julia/environments/nvim-lspconfig
-cp -r environments/repl/ ~/.julia/environments/repl
+
+# If using GNU Stow
+stow -t ~ .
+
+# If not using GNU Stow
+cp .julia/config/startup.jl ~/.julia/config/startup.jl
+cp -r .julia/environments/nvim-lspconfig/ ~/.julia/environments/nvim-lspconfig
+cp -r .julia/environments/repl/ ~/.julia/environments/repl
 ```
 
 2. Set up the `nvim-lspconfig` environment:
