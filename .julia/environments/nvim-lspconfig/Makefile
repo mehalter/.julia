@@ -47,7 +47,7 @@ else
 	SYSIMAGE=languageserver.dylib
 endif
 
-default: $(SYSIMAGE)
+default: clean $(SYSIMAGE)
 
 $(SYSIMAGE): Manifest.toml packagecompiler/Manifest.toml packagecompiler/precompile_statements.jl
 	JULIA_LOAD_PATH=${PWD}:${PWD}/packagecompiler:@stdlib ${JULIA} -e 'using PackageCompiler; PackageCompiler.create_sysimage(["LanguageServer"], sysimage_path="$(SYSIMAGE)", precompile_statements_file="packagecompiler/precompile_statements.jl")'
