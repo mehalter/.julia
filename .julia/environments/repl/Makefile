@@ -22,8 +22,7 @@
 #  To update the system image (e.g. when upgrading Julia or plugin versions)
 #  run the following commands from the ~/.julia/environments/repl directory:
 #
-#      julia --project=. -e 'using Pkg; Pkg.update()'
-#      make
+#      make update
 
 JULIA ?= $(shell which julia)
 JULIA_PROJECT=
@@ -65,7 +64,12 @@ bin/julia:
 clean:
 	rm -rf $(SYSIMAGE) packagecompiler bin
 
-.PHONY: clean default
+update_packages:
+	${JULIA} -e 'using Pkg; Pkg.update()'
+
+update: update_packages default
+
+.PHONY: clean update update_packages default
 
 export JULIA_SHIM
 define JULIA_SHIM

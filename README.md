@@ -132,6 +132,5 @@ cp -r .julia/environments/repl/ ~/.julia/environments/repl
 Change directories to the environment you want to update and run:
 
 ```sh
-julia --project=. -e 'using Pkg; Pkg.update()'
-make
+make update
 ```
