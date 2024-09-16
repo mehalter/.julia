@@ -86,9 +86,12 @@ clean:
 update_packages:
 	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.update()'
 
+repl:
+	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA}
+
 update: update_packages default
 
-.PHONY: clean update update_packages default
+.PHONY: clean update update_packages repl default
 
 export JULIA_SHIM
 define JULIA_SHIM

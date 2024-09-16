@@ -134,3 +134,11 @@ Change directories to the environment you want to update and run:
 ```sh
 make update
 ```
+
+## 💻 REPL
+
+Sometimes you may want to open a direct REPL into the environment with the base Julia installation, but you have a shell alias/function which points to your `repl` environment system image. I have provided a simple command to help with this. Simply change directories to the environment you want to update and run:
+
+```sh
+make repl
+```
