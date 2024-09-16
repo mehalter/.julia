@@ -65,7 +65,7 @@ clean:
 	rm -rf $(SYSIMAGE) packagecompiler bin
 
 update_packages:
-	${JULIA} -e 'using Pkg; Pkg.update()'
+	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.update()'
 
 update: update_packages default
 
