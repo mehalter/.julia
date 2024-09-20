@@ -46,15 +46,20 @@ cp -r .julia/environments/repl/ ~/.julia/environments/repl
                   .. "/environments/nvim-lspconfig/bin/julia"
                 if require("lspconfig").util.path.is_file(julia) then
                   new_config.cmd[1] = julia
-                else
-                  new_config.autostart = false -- only auto start if sysimage is available
                 end
               end,
+              -- recommended default settings used by Julia VS Code extension
               settings = {
                 julia = {
+                  completionmode = "qualify",
                   lint = {
-                    -- recommended default used by Julia VS Code extension
                     missingrefs = "none",
+                  },
+                  inlayHints = {
+                    static = {
+                      enabled = false,
+                      variableTypes = { enabled = true },
+                    },
                   },
                 },
               },
@@ -79,6 +84,21 @@ cp -r .julia/environments/repl/ ~/.julia/environments/repl
                   new_config.cmd[1] = julia
               end
           end,
+          -- recommended default settings used by Julia VS Code extension
+          settings = {
+            julia = {
+              completionmode = "qualify",
+              lint = {
+                missingrefs = "none",
+              },
+              inlayHints = {
+                static = {
+                  enabled = false,
+                  variableTypes = { enabled = true },
+                },
+              },
+            },
+          },
           -- ...
       })
       ```
