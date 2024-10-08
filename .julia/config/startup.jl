@@ -1,3 +1,4 @@
+using Pkg: Pkg
 atreplinit() do repl
     # Only setup REPL if using the REPL system image
     if haskey(ENV, "JULIA_REPL") || unsafe_string(Base.JLOptions().image_file) == joinpath(get(DEPOT_PATH, 1, joinpath(homedir(), ".julia")), "environments", "repl", "repl.so")
